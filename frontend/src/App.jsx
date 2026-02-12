@@ -1,18 +1,18 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import Home from "./pages/Home.jsx";
-import Login from "./pages/Login.jsx";
-import Register from "./pages/register.jsx";
-import Kitchen from "./pages/Kitchen.jsx";
-import Livingroom from "./pages/Livingroom.jsx";
-import Bedroom from "./pages/Bedroom.jsx";
-import Bathroom from "./pages/Bathroom.jsx";
-import Price from "./pages/Price.jsx";
-import Consultation from "./pages/Consultation.jsx";
-import MyDesigns from "./pages/MyDesigns.jsx";
-import AdminDashboard from "./admin/pages/AdminDashboard";
 import AdminClients from "./admin/pages/AdminClients";
 import AdminConsultations from "./admin/pages/AdminConsultations";
+import AdminDashboard from "./admin/pages/AdminDashboard";
+import Bathroom from "./pages/Bathroom.jsx";
+import Bedroom from "./pages/Bedroom.jsx";
+import Consultation from "./pages/Consultation.jsx";
+import Home from "./pages/Home.jsx";
+import Kitchen from "./pages/Kitchen.jsx";
+import Livingroom from "./pages/Livingroom.jsx";
+import Login from "./pages/Login.jsx";
+import MyDesigns from "./pages/MyDesigns.jsx";
+import Price from "./pages/Price.jsx";
+import Register from "./pages/Register.jsx";
 
 
 function App() {
