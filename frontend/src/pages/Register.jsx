@@ -1,7 +1,7 @@
-import { useState } from "react";
 import axios from "axios";
-import Navbar from "../components/Navbar";
+import { useState } from "react";
 import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 
 export default function Register({ isPopup = false }) {
   const [name, setName] = useState("");
@@ -14,7 +14,7 @@ export default function Register({ isPopup = false }) {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/users/register", {
+      const res = await axios.post("/api/users/register", {
         name,
         phone,
         email,

@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 import AdminLayout from "../AdminLayout";
 
 export default function AdminConsultations() {
@@ -7,7 +7,7 @@ export default function AdminConsultations() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/admin/consultations")
+      .get("/api/admin/consultations")
       .then((res) => setConsultations(res.data))
       .catch((err) =>
         console.log("Consultation Fetch Error:", err.response?.data || err)

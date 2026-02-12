@@ -1,8 +1,8 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 import LoginModal from "../components/LoginModal";
-import { useEffect, useState } from "react";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   // For login button visibility

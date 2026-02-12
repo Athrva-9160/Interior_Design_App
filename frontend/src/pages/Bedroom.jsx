@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
 import axios from "axios";
-import Navbar from "../components/Navbar";
+import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 
 export default function Bedroom() {
   const [designs, setDesigns] = useState([]);
@@ -12,7 +12,7 @@ export default function Bedroom() {
   // Load all bedroom designs
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/designs/${category}`)
+      .get(`/api/designs/${category}`)
       .then((res) => setDesigns(res.data))
       .catch((err) => console.log("Design Load Error:", err));
   }, []);
@@ -22,7 +22,7 @@ export default function Bedroom() {
     if (!userId) return;
 
     axios
-      .get(`http://localhost:5000/api/liked/user/${userId}/${category}`)
+      .get(`/api/liked/user/${userId}/${category}`)
       .then((res) => {
         const likedIds = res.data.map((item) => item.designId);
         setLiked(likedIds);
@@ -42,7 +42,7 @@ export default function Bedroom() {
     try {
       if (liked.includes(designId)) {
         // UNLIKE
-        await axios.post("http://localhost:5000/api/liked/unlike", {
+        await axios.post("/api/liked/unlike", {
           userId,
           designId,
         });
@@ -50,7 +50,7 @@ export default function Bedroom() {
         setLiked(liked.filter((id) => id !== designId));
       } else {
         // LIKE — send full design details
-        await axios.post("http://localhost:5000/api/liked", {
+        await axios.post("/api/liked", {
           userId,
           designId,
           category,

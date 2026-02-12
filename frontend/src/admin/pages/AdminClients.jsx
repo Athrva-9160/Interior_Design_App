@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 import AdminLayout from "../AdminLayout";
 
 export default function AdminClients() {
@@ -7,7 +7,7 @@ export default function AdminClients() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/admin/clients")
+      .get("/api/admin/clients")
       .then((res) => setClients(res.data));
   }, []);
 

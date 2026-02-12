@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Calendar from "../components/Calendar";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 
 export default function Consultation() {
   const [step, setStep] = useState(1);
@@ -21,7 +21,7 @@ export default function Consultation() {
     if (!userId) return;
 
     axios
-      .get(`http://localhost:5000/api/clients/user/${userId}`)
+      .get(`/api/clients/user/${userId}`)
       .then((res) => {
         setClientDocId(res.data._id);
         localStorage.setItem("clientDocId", res.data._id);
@@ -66,7 +66,7 @@ export default function Consultation() {
         return;
       }
 
-      await axios.post("http://localhost:5000/api/consultations", {
+      await axios.post("/api/consultations", {
         clientId: storedClientId,
         consultationDate: selectedDate,
       });

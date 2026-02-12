@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
 import axios from "axios";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 
 export default function MyDesigns() {
   const { category } = useParams();
