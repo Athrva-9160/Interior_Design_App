@@ -1,6 +1,6 @@
+import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -24,14 +24,15 @@ dotenv.config();
 
 const app = express();
 
+// Fix __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Middleware
+// ================= Middleware =================
 app.use(cors());
 app.use(express.json());
 
-
+// ================= API ROUTES =================
 app.use("/api/users", userRoutes);
 app.use("/api/clients", clientRoutes);
 app.use("/api/designs", designRoutes);
@@ -41,17 +42,24 @@ app.use("/api/admin/consultations", adminConsultationRoutes);
 app.use("/api/consultations", consultationRoutes);
 app.use("/api/admin", adminRoutes);
 
-// Serve React build (Vite -> dist folder)
+// ================= FRONTEND (VITE BUILD) =================
+
+// Serve static files from dist folder
 app.use(express.static(path.join(__dirname, "dist")));
 
-// Catch-all to serve React app
-app.get("*", (req, res) => {
+// SPA fallback (important for React Router)
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
+// ================= START SERVER =================
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, async () => {
-  await connectDB();
-  console.log(`🚀 Backend running on port ${PORT}`);
+  try {
+    await connectDB();
+    console.log(`🚀 Server running on port ${PORT}`);
+  } catch (error) {
+    console.error("Database connection failed:", error);
+  }
 });
