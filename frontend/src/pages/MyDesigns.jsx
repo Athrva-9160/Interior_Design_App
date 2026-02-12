@@ -15,7 +15,7 @@ export default function MyDesigns() {
     if (!category) return;
 
     axios
-      .get(`http://localhost:5000/api/liked/user/${userId}/${category}`)
+      .get(`/api/liked/user/${userId}/${category}`)
       .then((res) => {
         setDesigns(res.data);
 
@@ -27,7 +27,7 @@ export default function MyDesigns() {
   // FIX: toggle using designId
   const toggleLike = async (designId) => {
     if (liked.includes(designId)) {
-      await axios.post("http://localhost:5000/api/liked/unlike", {
+      await axios.post("/api/liked/unlike", {
         userId,
         designId,
       });
